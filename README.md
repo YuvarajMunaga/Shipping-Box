@@ -2,6 +2,10 @@
 
 A simple React application for managing shipping boxes. Users can add shipping boxes with details such as receiver name, weight, color, and destination, and view a list of all added boxes.
 
+## Live Demo
+
+Check out the deployed app here: [Shipping Box](https://shipping-box-one.vercel.app/)
+
 ## Features
 
 - Add a shipping box with receiver name, weight, color, and destination.
