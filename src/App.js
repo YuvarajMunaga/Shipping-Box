@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import AddBox from "./components/AddBox";
+import BoxList from "./components/TableView";
+import NavBar from "./components/NavBar";
+import CONSTANTS from "./Atoms/Constants";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [boxes, setBoxes] = useState([]);
+
+  const {
+    ROUTES: { ADD_BOX, BOX_LIST },
+  } = CONSTANTS;
+
+  const addBox = (box) => {
+    setBoxes([...boxes, box]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app-container">
+        <NavBar />
+        <div>
+          <Routes>
+            <Route path={ADD_BOX} element={<AddBox addBox={addBox} />} />
+            <Route path={BOX_LIST} element={<BoxList boxes={boxes} />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
